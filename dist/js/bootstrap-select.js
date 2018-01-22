@@ -1,7 +1,7 @@
 /*!
  * Bootstrap-select v1.12.4 (https://silviomoreto.github.io/bootstrap-select)
  *
- * Copyright 2013-2017 bootstrap-select
+ * Copyright 2013-2018 bootstrap-select
  * Licensed under MIT (https://github.com/silviomoreto/bootstrap-select/blob/master/LICENSE)
  */
 
@@ -268,7 +268,7 @@
     "'": '&#x27;',
     '`': '&#x60;'
   };
-  
+
   var unescapeMap = {
     '&amp;': '&',
     '&lt;': '<',
@@ -288,7 +288,7 @@
     var testRegexp = RegExp(source);
     var replaceRegexp = RegExp(source, 'g');
     return function(string) {
-      string = string == null ? '' : '' + string;
+      string = string == null ? '' : '' + $(('<p>' + string + '</p>').replace(/['"]+/g, '')).text();
       return testRegexp.test(string) ? string.replace(replaceRegexp, escaper) : string;
     };
   };
@@ -522,7 +522,7 @@
           : '';
       var drop =
           '<div class="btn-group bootstrap-select' + showTick + inputGroup + '">' +
-          '<button type="button" class="' + this.options.styleBase + ' dropdown-toggle" data-toggle="dropdown"' + autofocus + ' role="button">' +
+          '<button type="button" class="' + this.options.styleBase + ' dropdown-toggle" data-toggle="dropdown"' + autofocus + ' role="button" aria-labelledby="'+this.$element.attr("aria-labelledby")+'">' +
           '<span class="filter-option pull-left"></span>&nbsp;' +
           '<span class="bs-caret">' +
           this.options.template.caret +
@@ -719,7 +719,7 @@
             if (prevHiddenIndex !== undefined) {
               // select the element **before** the first hidden element in the group
               var prevHidden = $selectOptions.eq(prevHiddenIndex)[0].previousElementSibling;
-              
+
               if (prevHidden && prevHidden.tagName === 'OPTGROUP' && !prevHidden.disabled) {
                 showDivider = true;
               }
@@ -1230,7 +1230,7 @@
     },
 
     tabIndex: function () {
-      if (this.$element.data('tabindex') !== this.$element.attr('tabindex') && 
+      if (this.$element.data('tabindex') !== this.$element.attr('tabindex') &&
         (this.$element.attr('tabindex') !== -98 && this.$element.attr('tabindex') !== '-98')) {
         this.$element.data('tabindex', this.$element.attr('tabindex'));
         this.$button.attr('tabindex', this.$element.data('tabindex'));
@@ -1534,13 +1534,13 @@
           $lisVisible = this.$lis.not('.divider, .dropdown-header, .disabled, .hidden'),
           lisVisLen = $lisVisible.length,
           selectedOptions = [];
-          
+
       if (status) {
         if ($lisVisible.filter('.selected').length === $lisVisible.length) return;
       } else {
         if ($lisVisible.filter('.selected').length === 0) return;
       }
-          
+
       $lisVisible.toggleClass('selected', status);
 
       for (var i = 0; i < lisVisLen; i++) {

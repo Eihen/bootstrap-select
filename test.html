@@ -54,7 +54,7 @@
       <label for="basic" class="col-lg-2 control-label">"Basic" (liveSearch enabled)</label>
 
       <div class="col-lg-10">
-        <select id="basic" class="selectpicker show-tick form-control" data-live-search="true">
+        <select id="basic-livesearch" class="selectpicker show-tick form-control" data-live-search="true">
           <option>cow</option>
           <option data-subtext="option subtext">bull</option>
           <option class="get-class" disabled>ox</option>
@@ -69,6 +69,27 @@
   </form>
 
   <hr>
+
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label for="basic" class="col-lg-2 control-label">"Basic" (liveSearchNormalize enabled)</label>
+
+      <div class="col-lg-10">
+        <select id="basic-normalize" class="selectpicker show-tick form-control" data-live-search="true"  data-live-search-normalize="true">
+          <option>cow</option>
+          <option data-subtext="asdadasd">Maçã</option>
+          <option class="get-class" disabled>Açaí</option>
+          <optgroup label="test" data-subtext="optgroup subtext">
+            <option data-subtext="aqwqq">Testê</option>
+            <option selected>Abc</option>
+          </optgroup>
+        </select>
+      </div>
+    </div>
+  </form>
+
+  <hr>
+
   <form class="form-horizontal" role="form">
     <div class="form-group">
       <label for="basic2" class="col-lg-2 control-label">"Basic" (multiple, maxOptions=1)</label>
